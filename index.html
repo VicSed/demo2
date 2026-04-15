@@ -31,13 +31,11 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: #faf8f4; color: #1a1a1a; overflow-x: hidden; }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f5f0e8; }
         ::-webkit-scrollbar-thumb { background: #c4a265; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #9a7a33; }
 
-        /* Animations */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
@@ -46,21 +44,9 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
         @keyframes lineGrow {
             from { width: 0; }
             to { width: 100%; }
-        }
-        @keyframes slideRight {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes countUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
@@ -84,7 +70,6 @@
         .hero-title, .hero-subtitle, .hero-cta, .hero-scroll { opacity: 0; }
         .hero-line { width: 0; }
 
-        /* Card hover effects */
         .card-hover { transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
         .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(26, 60, 42, 0.12); }
 
@@ -92,36 +77,29 @@
         .img-reveal img { transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
         .img-reveal:hover img { transform: scale(1.05); }
 
-        /* Nav */
         .nav-scrolled { background: rgba(250, 248, 244, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(26, 60, 42, 0.08); }
         .nav-link { position: relative; }
         .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: #c4a265; transition: width 0.3s ease; }
         .nav-link:hover::after { width: 100%; }
 
-        /* Map dots */
-        .map-dot { animation: float 3s ease-in-out infinite; }
-        .map-dot:nth-child(2) { animation-delay: 0.5s; }
-        .map-dot:nth-child(3) { animation-delay: 1s; }
-        .map-dot:nth-child(4) { animation-delay: 1.5s; }
-        .map-dot:nth-child(5) { animation-delay: 2s; }
-
-        /* Product filter */
         .filter-btn.active { background: #1a3c2a; color: #faf8f4; }
 
-        /* Form styles */
         .form-input { transition: all 0.3s ease; border: 1px solid #e0d5c1; }
         .form-input:focus { border-color: #c4a265; box-shadow: 0 0 0 3px rgba(196, 162, 101, 0.1); outline: none; }
 
-        /* Section divider */
         .section-label { letter-spacing: 0.2em; }
 
-        /* Toast */
         .toast { animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 
-        /* Mobile menu */
         .mobile-menu { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
         .mobile-menu.hidden { opacity: 0; pointer-events: none; transform: translateY(-10px); }
         .mobile-menu.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+
+        .sustain-card { transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+        .sustain-card:hover { border-color: rgba(196, 162, 101, 0.4); }
+
+        .location-card { transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+        .location-card:hover { background: rgba(255,255,255,0.12); border-color: rgba(196,162,101,0.4); }
 
         @media (max-width: 768px) {
             .hero-title { font-size: 2.5rem !important; }
@@ -131,41 +109,27 @@
 <body>
 
     <!-- Navigation -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <img 
-                    src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c4978bc1bea4e35d39699.svg" 
-                    alt="Amfresh Logo"
-                    class="h-10 w-auto object-contain"
-                >
-            </a>
-
-            <!-- Desktop Nav -->
-            <div class="hidden lg:flex items-center gap-10">
-                <a href="#about" class="nav-link text-sm font-medium text-charcoal-600 hover:text-forest-700 transition-colors">About</a>
-                <a href="#business" class="nav-link text-sm font-medium text-charcoal-600 hover:text-forest-700 transition-colors">Business</a>
-                <a href="#products" class="nav-link text-sm font-medium text-charcoal-600 hover:text-forest-700 transition-colors">Products</a>
-                <a href="#global" class="nav-link text-sm font-medium text-charcoal-600 hover:text-forest-700 transition-colors">Global</a>
-                <a href="#sustainability" class="nav-link text-sm font-medium text-charcoal-600 hover:text-forest-700 transition-colors">Sustainability</a>
-                <a href="#contact" class="ml-4 px-6 py-2.5 bg-forest-700 text-ivory-100 text-sm font-medium rounded-full hover:bg-forest-600 transition-all duration-300 hover:shadow-lg hover:shadow-forest-700/20">
-                    Contact Us
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c4978bc1bea4e35d39699.svg" alt="Amfresh Logo" class="h-10 w-auto object-contain">
                 </a>
+                <div class="hidden lg:flex items-center gap-10">
+                    <a href="#about" class="nav-link text-sm font-medium text-charcoal-600 hover:text-forest-700 transition-colors">About</a>
+                    <a href="#business" class="nav-link text-sm font-medium text-charcoal-600 hover:text-forest-700 transition-colors">Business</a>
+                    <a href="#products" class="nav-link text-sm font-medium text-charcoal-600 hover:text-forest-700 transition-colors">Products</a>
+                    <a href="#global" class="nav-link text-sm font-medium text-charcoal-600 hover:text-forest-700 transition-colors">Global</a>
+                    <a href="#sustainability" class="nav-link text-sm font-medium text-charcoal-600 hover:text-forest-700 transition-colors">Sustainability</a>
+                    <a href="#contact" class="ml-4 px-6 py-2.5 bg-forest-700 text-ivory-100 text-sm font-medium rounded-full hover:bg-forest-600 transition-all duration-300 hover:shadow-lg hover:shadow-forest-700/20">
+                        Contact Us
+                    </a>
+                </div>
+                <button id="menuToggle" class="lg:hidden w-10 h-10 flex items-center justify-center text-forest-700">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
             </div>
-
-            <!-- Mobile Menu Toggle -->
-            <button id="menuToggle" class="lg:hidden w-10 h-10 flex items-center justify-center text-forest-700">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
-
         </div>
-    </div>
-</nav>
-
-        <!-- Mobile Menu -->
         <div id="mobileMenu" class="mobile-menu hidden lg:hidden absolute top-full left-0 right-0 bg-ivory-100/98 backdrop-blur-xl border-b border-ivory-300">
             <div class="px-6 py-8 space-y-6">
                 <a href="#about" class="block text-lg font-medium text-charcoal-700 hover:text-forest-700 transition-colors mobile-link">About</a>
@@ -180,14 +144,11 @@
 
     <!-- Hero Section -->
     <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
-        <!-- Background Image -->
         <div class="absolute inset-0">
             <img src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c81f3bc1bea1429d3eb54.jpeg" alt="Vineyard landscape" class="w-full h-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-r from-forest-900/80 via-forest-900/50 to-transparent"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-forest-900/40 via-transparent to-transparent"></div>
         </div>
-
-        <!-- Content -->
         <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 w-full">
             <div class="max-w-3xl" id="heroContent">
                 <div class="hero-title">
@@ -223,8 +184,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Right side stats -->
         <div class="hidden lg:flex absolute right-12 bottom-20 flex-col gap-8 z-10">
             <div class="text-right">
                 <div class="text-4xl font-serif font-semibold text-ivory-100 counter" data-target="40">0</div>
@@ -246,13 +205,10 @@
     <!-- About / Brand Story -->
     <section id="about" class="py-28 lg:py-36 bg-ivory-100">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <!-- Section Label -->
             <div class="animate-on-scroll">
                 <span class="section-label text-xs font-semibold text-gold-500 uppercase tracking-[0.25em]">Our Heritage</span>
             </div>
-
             <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 mt-12">
-                <!-- Left: Text -->
                 <div class="animate-on-scroll delay-1">
                     <h2 class="text-4xl md:text-5xl font-serif font-semibold text-forest-700 leading-[1.15] tracking-tight">
                         Four decades of passion for the <span class="italic text-gold-500">extraordinary</span>
@@ -283,13 +239,10 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Right: Image Composition -->
                 <div class="animate-on-scroll delay-2 relative">
                     <div class="img-reveal rounded-2xl overflow-hidden shadow-2xl shadow-forest-700/10">
                         <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/J2acXi3L4vbqtsan1CIE/media/684a041d5ebff51036c5ef5f.jpeg" alt="Amfresh orchard" class="w-full h-[500px] lg:h-[600px] object-cover" />
                     </div>
-                    <!-- Floating accent card -->
                     <div class="absolute -bottom-6 -left-6 bg-white rounded-xl p-6 shadow-xl shadow-charcoal-700/8 max-w-[220px]">
                         <div class="w-10 h-10 bg-gold-50 rounded-lg flex items-center justify-center mb-3">
                             <i data-lucide="award" class="w-5 h-5 text-gold-500"></i>
@@ -297,7 +250,6 @@
                         <div class="text-sm font-semibold text-forest-700">Certified Excellence</div>
                         <div class="text-xs text-charcoal-400 mt-1">GlobalG.A.P., BRC, IFS, ISO 14001 certified operations</div>
                     </div>
-                    <!-- Decorative element -->
                     <div class="absolute -top-4 -right-4 w-24 h-24 border-2 border-gold-300/30 rounded-2xl"></div>
                 </div>
             </div>
@@ -329,195 +281,177 @@
     </div>
 
     <!-- Products / Citrus Categories -->
-<section id="products" class="py-28 lg:py-36 bg-ivory-100">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        
-        <div class="text-center max-w-2xl mx-auto">
-            <span class="section-label text-xs font-semibold text-gold-500 uppercase tracking-[0.25em]">Our Citrus Range</span>
-            <h2 class="text-4xl md:text-5xl font-serif font-semibold text-forest-700 leading-[1.15] tracking-tight mt-6">
-                Premium citrus,<br><span class="italic text-gold-500">perfected</span> varieties
-            </h2>
+    <section id="products" class="py-28 lg:py-36 bg-ivory-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="section-label text-xs font-semibold text-gold-500 uppercase tracking-[0.25em]">Our Citrus Range</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-semibold text-forest-700 leading-[1.15] tracking-tight mt-6">
+                    Premium citrus,<br><span class="italic text-gold-500">perfected</span> varieties
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+                <div class="product-card card-hover bg-white rounded-2xl overflow-hidden border border-ivory-300/50 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c5132082624ca2e14fa92.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-serif font-semibold text-forest-700">Grapefruit</h3>
+                        <p class="text-charcoal-400 text-sm mt-2">Balanced acidity with refreshing bitterness. Ideal for premium fresh consumption and juicing.</p>
+                    </div>
+                </div>
+                <div class="product-card card-hover bg-white rounded-2xl overflow-hidden border border-ivory-300/50 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c5132e3c4095357c8b3bd.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-serif font-semibold text-forest-700">Oranges</h3>
+                        <p class="text-charcoal-400 text-sm mt-2">Exceptional sweetness and juiciness across multiple varieties, sourced from top growing regions.</p>
+                    </div>
+                </div>
+                <div class="product-card card-hover bg-white rounded-2xl overflow-hidden border border-ivory-300/50 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c5131107fb0bac8b5e4fd.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-serif font-semibold text-forest-700">Limes</h3>
+                        <p class="text-charcoal-400 text-sm mt-2">Vibrant, aromatic, and essential for culinary and beverage applications worldwide.</p>
+                    </div>
+                </div>
+                <div class="product-card card-hover bg-white rounded-2xl overflow-hidden border border-ivory-300/50 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c513251e5e58450df4240.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-serif font-semibold text-forest-700">Easy Peelers</h3>
+                        <p class="text-charcoal-400 text-sm mt-2">Convenient, sweet, and seedless varieties designed for effortless consumption.</p>
+                    </div>
+                </div>
+                <div class="product-card card-hover bg-white rounded-2xl overflow-hidden border border-ivory-300/50 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c513107bcd36d0f5d86f3.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-serif font-semibold text-forest-700">Lemons</h3>
+                        <p class="text-charcoal-400 text-sm mt-2">High acidity and freshness, perfect for culinary, beverages, and industrial uses.</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
-
-            <!-- Grapefruit -->
-            <div class="product-card card-hover bg-white rounded-2xl overflow-hidden border border-ivory-300/50 group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c5132082624ca2e14fa92.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-serif font-semibold text-forest-700">Grapefruit</h3>
-                    <p class="text-charcoal-400 text-sm mt-2">Balanced acidity with refreshing bitterness. Ideal for premium fresh consumption and juicing.</p>
-                </div>
-            </div>
-
-            <!-- Oranges -->
-            <div class="product-card card-hover bg-white rounded-2xl overflow-hidden border border-ivory-300/50 group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c5132e3c4095357c8b3bd.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-serif font-semibold text-forest-700">Oranges</h3>
-                    <p class="text-charcoal-400 text-sm mt-2">Exceptional sweetness and juiciness across multiple varieties, sourced from top growing regions.</p>
-                </div>
-            </div>
-
-            <!-- Limes -->
-            <div class="product-card card-hover bg-white rounded-2xl overflow-hidden border border-ivory-300/50 group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c5131107fb0bac8b5e4fd.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-serif font-semibold text-forest-700">Limes</h3>
-                    <p class="text-charcoal-400 text-sm mt-2">Vibrant, aromatic, and essential for culinary and beverage applications worldwide.</p>
-                </div>
-            </div>
-
-            <!-- Easy Peelers -->
-            <div class="product-card card-hover bg-white rounded-2xl overflow-hidden border border-ivory-300/50 group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c513251e5e58450df4240.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-serif font-semibold text-forest-700">Easy Peelers</h3>
-                    <p class="text-charcoal-400 text-sm mt-2">Convenient, sweet, and seedless varieties designed for effortless consumption.</p>
-                </div>
-            </div>
-
-            <!-- Lemons -->
-            <div class="product-card card-hover bg-white rounded-2xl overflow-hidden border border-ivory-300/50 group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="https://storage.googleapis.com/msgsndr/J2acXi3L4vbqtsan1CIE/media/684c513107bcd36d0f5d86f3.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-serif font-semibold text-forest-700">Lemons</h3>
-                    <p class="text-charcoal-400 text-sm mt-2">High acidity and freshness, perfect for culinary, beverages, and industrial uses.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-    <!-- Global Presence -->
+    <!-- Global Presence — UPDATED -->
     <section id="global" class="py-28 lg:py-36 bg-forest-700 relative overflow-hidden">
-        <!-- Subtle pattern overlay -->
         <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+                <!-- Left: Location Cards -->
                 <div>
-                    <span class="animate-on-scroll section-label text-xs font-semibold text-gold-400 uppercase tracking-[0.25em]">Global Reach</span>
+                    <span class="animate-on-scroll section-label text-xs font-semibold text-gold-400 uppercase tracking-[0.25em]">Where to Find Us</span>
                     <h2 class="animate-on-scroll delay-1 text-4xl md:text-5xl font-serif font-semibold text-ivory-100 leading-[1.15] tracking-tight mt-6">
-                        From origin to shelf, <span class="italic text-gold-300">seamlessly</span>
+                        Our <span class="italic text-gold-300">locations</span> in Spain
                     </h2>
-                    <p class="animate-on-scroll delay-2 text-ivory-300/70 font-light leading-[1.8] text-lg mt-8">
-                        Our global network of owned production facilities, packhouses, cold storage, and distribution centers ensures uninterrupted supply and consistent quality across all markets.
+                    <p class="animate-on-scroll delay-2 text-ivory-300/70 font-light leading-[1.8] text-lg mt-6">
+                        Visit our production and packhouse facilities in the heart of Valencia's citrus-growing region.
                     </p>
 
-                    <!-- Region List -->
-                    <div class="animate-on-scroll delay-3 mt-12 space-y-4">
-                        <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-300 cursor-default">
-                            <div class="w-10 h-10 rounded-lg bg-gold-400/10 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="map-pin" class="w-5 h-5 text-gold-400"></i>
+                    <div class="animate-on-scroll delay-3 mt-10 space-y-5">
+                        <!-- Location 1 -->
+                        <div class="location-card p-6 rounded-xl bg-white/5 border border-white/10">
+                            <div class="flex items-start gap-4">
+                                <div class="w-11 h-11 rounded-lg bg-gold-400/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-gold-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-ivory-100 font-medium text-base">Calle Llosa de Ranes</div>
+                                    <div class="text-sm text-ivory-300/60 font-light mt-1">Valencia, 46294, Spain</div>
+                                    <div class="flex items-center gap-2 mt-3">
+                                        <i data-lucide="mail" class="w-4 h-4 text-gold-400/70"></i>
+                                        <a href="mailto:info@amfresh.com" class="text-sm text-gold-400 hover:text-gold-300 transition-colors">info@amfresh.com</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <div class="text-ivory-100 font-medium">Europe</div>
-                                <div class="text-xs text-ivory-300/50">Spain, Netherlands, UK, Germany, Italy, France</div>
+                            <div class="mt-5 pt-5 border-t border-white/10">
+                                <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 bg-gold-400 text-forest-900 text-xs font-semibold rounded-full hover:bg-gold-300 transition-all duration-300">
+                                    Contact Us
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-300 cursor-default">
-                            <div class="w-10 h-10 rounded-lg bg-gold-400/10 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="map-pin" class="w-5 h-5 text-gold-400"></i>
+
+                        <!-- Location 2 -->
+                        <div class="location-card p-6 rounded-xl bg-white/5 border border-white/10">
+                            <div class="flex items-start gap-4">
+                                <div class="w-11 h-11 rounded-lg bg-gold-400/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-gold-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-ivory-100 font-medium text-base">Carretera Rafelguaraf, s/n</div>
+                                    <div class="text-sm text-ivory-300/60 font-light mt-1">46670 La Pobla Llarga, Valencia, Spain</div>
+                                    <div class="flex items-center gap-2 mt-3">
+                                        <i data-lucide="mail" class="w-4 h-4 text-gold-400/70"></i>
+                                        <a href="mailto:info@amfresh.com" class="text-sm text-gold-400 hover:text-gold-300 transition-colors">info@amfresh.com</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <div class="text-ivory-100 font-medium">Americas</div>
-                                <div class="text-xs text-ivory-300/50">Peru, Chile, Brazil, USA, Canada, Mexico</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-300 cursor-default">
-                            <div class="w-10 h-10 rounded-lg bg-gold-400/10 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="map-pin" class="w-5 h-5 text-gold-400"></i>
-                            </div>
-                            <div>
-                                <div class="text-ivory-100 font-medium">Asia-Pacific & Africa</div>
-                                <div class="text-xs text-ivory-300/50">India, South Africa, China, UAE, Saudi Arabia</div>
+                            <div class="mt-5 pt-5 border-t border-white/10">
+                                <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 bg-gold-400 text-forest-900 text-xs font-semibold rounded-full hover:bg-gold-300 transition-all duration-300">
+                                    Contact Us
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Map Visualization -->
+                <!-- Right: Map Visualization -->
                 <div class="animate-on-scroll delay-2 relative">
                     <div class="relative bg-white/5 rounded-2xl border border-white/10 p-8 backdrop-blur-sm">
-                        <!-- Simplified world map using SVG dots -->
                         <svg viewBox="0 0 500 280" class="w-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Continents simplified outlines -->
-                            <!-- Europe -->
                             <path d="M230 60 L240 55 L255 50 L265 55 L270 65 L260 70 L250 75 L240 72 L235 65 Z" fill="rgba(196,162,101,0.15)" stroke="rgba(196,162,101,0.3)" stroke-width="0.5"/>
-                            <!-- Spain highlight -->
-                            <circle cx="228" cy="72" r="6" fill="rgba(196,162,101,0.4)" stroke="rgba(196,162,101,0.8)" stroke-width="1"/>
-                            <circle cx="228" cy="72" r="3" fill="#c4a265"/>
-                            <!-- Netherlands -->
+                            <circle cx="228" cy="72" r="8" fill="rgba(196,162,101,0.25)" stroke="rgba(196,162,101,0.6)" stroke-width="1.2">
+                                <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="228" cy="72" r="5" fill="rgba(196,162,101,0.5)" stroke="rgba(196,162,101,0.9)" stroke-width="1"/>
+                            <circle cx="228" cy="72" r="2.5" fill="#c4a265"/>
                             <circle cx="242" cy="55" r="4" fill="rgba(196,162,101,0.3)" stroke="rgba(196,162,101,0.6)" stroke-width="0.8"/>
                             <circle cx="242" cy="55" r="2" fill="#c4a265"/>
-
-                            <!-- Africa -->
                             <path d="M230 90 L250 85 L265 95 L270 120 L260 150 L245 165 L230 155 L220 130 L225 105 Z" fill="rgba(196,162,101,0.1)" stroke="rgba(196,162,101,0.2)" stroke-width="0.5"/>
-                            <!-- South Africa -->
                             <circle cx="252" cy="158" r="4" fill="rgba(196,162,101,0.3)" stroke="rgba(196,162,101,0.6)" stroke-width="0.8"/>
                             <circle cx="252" cy="158" r="2" fill="#c4a265"/>
-
-                            <!-- South America -->
                             <path d="M130 120 L150 110 L170 115 L185 130 L190 155 L180 180 L165 200 L145 195 L130 175 L120 150 Z" fill="rgba(196,162,101,0.1)" stroke="rgba(196,162,101,0.2)" stroke-width="0.5"/>
-                            <!-- Peru -->
                             <circle cx="148" cy="145" r="5" fill="rgba(196,162,101,0.35)" stroke="rgba(196,162,101,0.7)" stroke-width="1"/>
                             <circle cx="148" cy="145" r="2.5" fill="#c4a265"/>
-                            <!-- Chile -->
                             <circle cx="155" cy="165" r="4" fill="rgba(196,162,101,0.3)" stroke="rgba(196,162,101,0.6)" stroke-width="0.8"/>
                             <circle cx="155" cy="165" r="2" fill="#c4a265"/>
-                            <!-- Brazil -->
                             <circle cx="175" cy="150" r="3" fill="rgba(196,162,101,0.25)" stroke="rgba(196,162,101,0.5)" stroke-width="0.8"/>
                             <circle cx="175" cy="150" r="1.5" fill="#c4a265"/>
-
-                            <!-- North America -->
                             <path d="M60 40 L100 35 L130 45 L140 60 L135 80 L120 90 L90 85 L65 75 L55 55 Z" fill="rgba(196,162,101,0.1)" stroke="rgba(196,162,101,0.2)" stroke-width="0.5"/>
-                            <!-- USA -->
                             <circle cx="100" cy="60" r="4" fill="rgba(196,162,101,0.3)" stroke="rgba(196,162,101,0.6)" stroke-width="0.8"/>
                             <circle cx="100" cy="60" r="2" fill="#c4a265"/>
-                            <!-- Mexico -->
                             <circle cx="85" cy="85" r="3" fill="rgba(196,162,101,0.25)" stroke="rgba(196,162,101,0.5)" stroke-width="0.8"/>
                             <circle cx="85" cy="85" r="1.5" fill="#c4a265"/>
-
-                            <!-- Asia -->
                             <path d="M290 40 L350 35 L400 50 L420 70 L410 90 L380 100 L350 95 L310 85 L285 70 Z" fill="rgba(196,162,101,0.1)" stroke="rgba(196,162,101,0.2)" stroke-width="0.5"/>
-                            <!-- India -->
                             <circle cx="345" cy="105" r="5" fill="rgba(196,162,101,0.35)" stroke="rgba(196,162,101,0.7)" stroke-width="1"/>
                             <circle cx="345" cy="105" r="2.5" fill="#c4a265"/>
-                            <!-- China -->
                             <circle cx="385" cy="65" r="4" fill="rgba(196,162,101,0.3)" stroke="rgba(196,162,101,0.6)" stroke-width="0.8"/>
                             <circle cx="385" cy="65" r="2" fill="#c4a265"/>
-                            <!-- UAE -->
                             <circle cx="310" cy="100" r="3" fill="rgba(196,162,101,0.25)" stroke="rgba(196,162,101,0.5)" stroke-width="0.8"/>
                             <circle cx="310" cy="100" r="1.5" fill="#c4a265"/>
-
-                            <!-- Australia -->
                             <path d="M400 160 L440 155 L455 165 L450 180 L435 185 L410 180 L400 170 Z" fill="rgba(196,162,101,0.08)" stroke="rgba(196,162,101,0.15)" stroke-width="0.5"/>
-
-                            <!-- Connection lines from Spain -->
                             <line x1="228" y1="72" x2="148" y2="145" stroke="rgba(196,162,101,0.15)" stroke-width="0.8" stroke-dasharray="4 4"/>
                             <line x1="228" y1="72" x2="252" y2="158" stroke="rgba(196,162,101,0.15)" stroke-width="0.8" stroke-dasharray="4 4"/>
                             <line x1="228" y1="72" x2="345" y2="105" stroke="rgba(196,162,101,0.15)" stroke-width="0.8" stroke-dasharray="4 4"/>
                             <line x1="228" y1="72" x2="100" y2="60" stroke="rgba(196,162,101,0.15)" stroke-width="0.8" stroke-dasharray="4 4"/>
                             <line x1="228" y1="72" x2="385" y2="65" stroke="rgba(196,162,101,0.12)" stroke-width="0.8" stroke-dasharray="4 4"/>
+                            <!-- Valencia label -->
+                            <text x="228" y="90" fill="rgba(196,162,101,0.9)" font-size="9" font-family="Inter" text-anchor="middle" font-weight="500">VALENCIA</text>
                         </svg>
-
-                        <!-- Legend -->
                         <div class="flex items-center gap-6 mt-6 text-xs text-ivory-300/50">
                             <div class="flex items-center gap-2">
                                 <div class="w-3 h-3 rounded-full bg-gold-400"></div>
-                                <span>Production Hub</span>
+                                <span>Headquarters</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-2 h-2 rounded-full bg-gold-400/60"></div>
@@ -525,8 +459,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Floating stat -->
                     <div class="absolute -top-4 -right-4 bg-gold-400 text-forest-900 rounded-xl p-5 shadow-lg">
                         <div class="text-2xl font-serif font-bold">40+</div>
                         <div class="text-[10px] tracking-wider uppercase font-semibold">Countries</div>
@@ -536,84 +468,124 @@
         </div>
     </section>
 
-    <!-- Sustainability Section -->
+    <!-- Sustainability Section — UPDATED -->
     <section id="sustainability" class="py-28 lg:py-36 bg-ivory-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                <!-- Left: Image -->
-                <div class="animate-on-scroll relative order-2 lg:order-1">
-                    <div class="img-reveal rounded-2xl overflow-hidden shadow-2xl shadow-forest-700/8">
-                        <img src="https://picsum.photos/seed/sustainable-farm/700/850.jpg" alt="Sustainable farming" class="w-full h-[450px] lg:h-[550px] object-cover" />
+
+            <!-- Header -->
+            <div class="max-w-3xl">
+                <span class="animate-on-scroll section-label text-xs font-semibold text-gold-500 uppercase tracking-[0.25em]">Sustainability</span>
+                <h2 class="animate-on-scroll delay-1 text-4xl md:text-5xl font-serif font-semibold text-forest-700 leading-[1.15] tracking-tight mt-6">
+                    Committed to <span class="italic text-gold-500">Zero Waste</span>
+                </h2>
+                <div class="animate-on-scroll delay-2 w-16 h-0.5 bg-gold-400 mt-8 mb-8"></div>
+                <p class="animate-on-scroll delay-2 text-charcoal-500 font-light leading-[1.8] text-lg">
+                    <span class="font-medium text-forest-700">Our Sustainability Strategy</span>
+                </p>
+                <p class="animate-on-scroll delay-3 text-charcoal-500 font-light leading-[1.8] text-lg mt-4">
+                    In 2020, we launched our Group Sustainability Strategy to guide our efforts in enhancing outcomes for both people and the planet.
+                </p>
+                <p class="animate-on-scroll delay-3 text-charcoal-500 font-light leading-[1.8] text-lg mt-4">
+                    This strategy focuses on the most relevant sustainability areas for AMFRESH, where we can generate a meaningful and measurable impact across our operations and supply chain.
+                </p>
+            </div>
+
+            <!-- Three initiative cards -->
+            <div class="grid lg:grid-cols-3 gap-8 mt-20">
+
+                <!-- Card 1: The Insectarium Program -->
+                <div class="animate-on-scroll delay-1 sustain-card bg-white rounded-2xl p-8 border border-ivory-300/50 shadow-sm">
+                    <div class="w-14 h-14 bg-forest-50 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="bug" class="w-6 h-6 text-forest-600"></i>
                     </div>
-                    <!-- Overlay data card -->
-                    <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-lg">
-                        <div class="grid grid-cols-3 gap-4 text-center">
-                            <div>
-                                <div class="text-2xl font-serif font-semibold text-forest-700">30%</div>
-                                <div class="text-[10px] tracking-wider uppercase text-charcoal-400 mt-1">Water Reduction</div>
-                            </div>
-                            <div class="border-x border-ivory-300">
-                                <div class="text-2xl font-serif font-semibold text-forest-700">100%</div>
-                                <div class="text-[10px] tracking-wider uppercase text-charcoal-400 mt-1">Renewable Goal</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-serif font-semibold text-forest-700">Zero</div>
-                                <div class="text-[10px] tracking-wider uppercase text-charcoal-400 mt-1">Waste Target</div>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-serif font-semibold text-forest-700 leading-tight">The Insectarium Program</h3>
+                    <p class="text-charcoal-400 font-light text-sm leading-[1.8] mt-4">
+                        This initiative is based on breeding natural predators to control pests in our citrus plantations, leveraging the natural food chain and minimizing the use of chemical treatments — always as a last resort.
+                    </p>
+                    <p class="text-charcoal-400 font-light text-sm leading-[1.8] mt-4">
+                        Through a rigorous and controlled process, we are able to manage pests naturally across <span class="font-semibold text-forest-700">65 hectares</span> of farmland, delivering food with reduced chemical impact to consumers.
+                    </p>
                 </div>
 
-                <!-- Right: Text -->
-                <div class="order-1 lg:order-2">
-                    <span class="animate-on-scroll section-label text-xs font-semibold text-gold-500 uppercase tracking-[0.25em]">Sustainability</span>
-                    <h2 class="animate-on-scroll delay-1 text-4xl md:text-5xl font-serif font-semibold text-forest-700 leading-[1.15] tracking-tight mt-6">
-                        Growing responsibly for <span class="italic text-gold-500">generations</span> to come
-                    </h2>
-                    <p class="animate-on-scroll delay-2 text-charcoal-500 font-light leading-[1.8] text-lg mt-8">
-                        Sustainability isn't a department — it's embedded in every decision we make. From precision agriculture to renewable energy in our packhouses, we're committed to leaving the land better than we found it.
+                <!-- Card 2: Driving Change at Scale -->
+                <div class="animate-on-scroll delay-2 sustain-card bg-white rounded-2xl p-8 border border-ivory-300/50 shadow-sm">
+                    <div class="w-14 h-14 bg-forest-50 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="trending-up" class="w-6 h-6 text-forest-600"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-semibold text-forest-700 leading-tight">Driving Change at Scale</h3>
+                    <p class="text-charcoal-400 font-light text-sm leading-[1.8] mt-4">
+                        At AMFRESH, we are committed to leading the transition towards better fresh food at a sustainable scale.
                     </p>
+                    <p class="text-charcoal-400 font-light text-sm leading-[1.8] mt-4">
+                        As a <span class="font-semibold text-forest-700">shared-value company</span>, we actively promote innovation and transformation across our entire value chain and the wider industry.
+                    </p>
+                </div>
 
-                    <div class="animate-on-scroll delay-3 mt-12 space-y-6">
-                        <div class="flex gap-4">
-                            <div class="w-10 h-10 bg-forest-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i data-lucide="droplets" class="w-5 h-5 text-forest-600"></i>
+                <!-- Card 3: Zero Waste Commitment -->
+                <div class="animate-on-scroll delay-3 sustain-card bg-white rounded-2xl p-8 border border-ivory-300/50 shadow-sm">
+                    <div class="w-14 h-14 bg-forest-50 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="recycle" class="w-6 h-6 text-forest-600"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-semibold text-forest-700 leading-tight">Zero Waste Commitment</h3>
+                    <p class="text-charcoal-400 font-light text-sm leading-[1.8] mt-4">
+                        We are committed to achieving <span class="font-semibold text-forest-700">0% food waste</span> in our packhouses.
+                    </p>
+                    <p class="text-charcoal-400 font-light text-sm leading-[1.8] mt-4">
+                        While waste at farm level can be influenced by uncontrollable factors such as weather conditions, we focus on what we can control: <span class="font-semibold text-forest-700">excellence in agricultural management</span>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Best Practices Band -->
+            <div class="animate-on-scroll mt-16 bg-forest-700 rounded-2xl p-8 lg:p-12">
+                <div class="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-16">
+                    <div class="lg:w-1/3 flex-shrink-0">
+                        <div class="text-xs tracking-[0.2em] uppercase text-gold-400 font-semibold mb-3">Through Best Practices</div>
+                        <h4 class="text-2xl font-serif font-semibold text-ivory-100 leading-tight">We significantly reduce waste and improve overall efficiency</h4>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
+                                <div class="w-8 h-8 rounded-lg bg-gold-400/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="scissors" class="w-4 h-4 text-gold-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-ivory-100 text-sm font-medium">Effective Pruning</div>
+                                    <div class="text-xs text-ivory-300/50 mt-0.5">Optimising tree health and yield</div>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="text-base font-semibold text-forest-700">Water Stewardship</h4>
-                                <p class="text-sm text-charcoal-400 font-light leading-relaxed mt-1">Precision irrigation systems reducing water usage by 30% while maintaining optimal crop health.</p>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
+                                <div class="w-8 h-8 rounded-lg bg-gold-400/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="git-branch" class="w-4 h-4 text-gold-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-ivory-100 text-sm font-medium">Structural Support</div>
+                                    <div class="text-xs text-ivory-300/50 mt-0.5">Protecting heavy branches from breakage</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="w-10 h-10 bg-forest-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i data-lucide="recycle" class="w-5 h-5 text-forest-600"></i>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
+                                <div class="w-8 h-8 rounded-lg bg-gold-400/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="calendar-check" class="w-4 h-4 text-gold-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-ivory-100 text-sm font-medium">Optimal Ripeness Control</div>
+                                    <div class="text-xs text-ivory-300/50 mt-0.5">Harvesting at origin, at the right time</div>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="text-base font-semibold text-forest-700">Circular Packaging</h4>
-                                <p class="text-sm text-charcoal-400 font-light leading-relaxed mt-1">Fully recyclable and compostable packaging solutions, eliminating single-use plastics by 2026.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="w-10 h-10 bg-forest-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i data-lucide="sun" class="w-5 h-5 text-forest-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-base font-semibold text-forest-700">Clean Energy</h4>
-                                <p class="text-sm text-charcoal-400 font-light leading-relaxed mt-1">Solar installations across our facilities, targeting 100% renewable energy by 2028.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="w-10 h-10 bg-forest-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i data-lucide="heart-handshake" class="w-5 h-5 text-forest-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-base font-semibold text-forest-700">Community Impact</h4>
-                                <p class="text-sm text-charcoal-400 font-light leading-relaxed mt-1">Fair labor practices, educational programs, and community development in every growing region.</p>
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
+                                <div class="w-8 h-8 rounded-lg bg-gold-400/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="crosshair" class="w-4 h-4 text-gold-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-ivory-100 text-sm font-medium">Precision Pest Management</div>
+                                    <div class="text-xs text-ivory-300/50 mt-0.5">Targeted, natural pest control methods</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -657,7 +629,6 @@
     <section id="contact" class="py-28 lg:py-36 bg-ivory-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
-                <!-- Left -->
                 <div>
                     <span class="animate-on-scroll section-label text-xs font-semibold text-gold-500 uppercase tracking-[0.25em]">Get in Touch</span>
                     <h2 class="animate-on-scroll delay-1 text-4xl md:text-5xl font-serif font-semibold text-forest-700 leading-[1.15] tracking-tight mt-6">
@@ -666,8 +637,6 @@
                     <p class="animate-on-scroll delay-2 text-charcoal-500 font-light leading-[1.8] text-lg mt-8">
                         Whether you're a retailer, distributor, or grower looking for a trusted partner, we'd love to hear from you. Our team is ready to discuss how we can add value to your supply chain.
                     </p>
-
-                    <!-- Office Info -->
                     <div class="animate-on-scroll delay-3 mt-12 space-y-6">
                         <div class="flex items-start gap-4">
                             <div class="w-10 h-10 bg-forest-700 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -684,7 +653,7 @@
                             </div>
                             <div>
                                 <div class="text-sm font-semibold text-forest-700">Email</div>
-                                <div class="text-sm text-charcoal-400 font-light mt-1">partnerships@amfresh.com</div>
+                                <div class="text-sm text-charcoal-400 font-light mt-1">info@amfresh.com</div>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
@@ -697,8 +666,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Additional offices -->
                     <div class="animate-on-scroll delay-4 mt-10 pt-10 border-t border-ivory-300/50">
                         <div class="text-xs tracking-[0.2em] uppercase text-charcoal-400 font-medium mb-4">Regional Offices</div>
                         <div class="flex flex-wrap gap-3">
@@ -712,8 +679,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Right: Form -->
                 <div class="animate-on-scroll delay-2">
                     <form id="contactForm" class="bg-white rounded-2xl p-8 lg:p-10 shadow-xl shadow-charcoal-700/5 border border-ivory-300/50">
                         <div class="grid grid-cols-2 gap-5">
@@ -765,7 +730,6 @@
     <footer class="bg-charcoal-800 pt-20 pb-8">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-16 border-b border-charcoal-600">
-                <!-- Brand -->
                 <div class="lg:col-span-1">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 bg-forest-700 rounded-lg flex items-center justify-center">
@@ -784,8 +748,6 @@
                         World leaders in fresh produce sourcing, distribution, and innovation — delivering nature's best since 1984.
                     </p>
                 </div>
-
-                <!-- Links -->
                 <div>
                     <div class="text-xs tracking-[0.2em] uppercase text-charcoal-300 font-medium mb-6">Company</div>
                     <ul class="space-y-3">
@@ -796,7 +758,6 @@
                         <li><a href="#sustainability" class="text-sm text-charcoal-200 hover:text-gold-400 transition-colors">Sustainability</a></li>
                     </ul>
                 </div>
-
                 <div>
                     <div class="text-xs tracking-[0.2em] uppercase text-charcoal-300 font-medium mb-6">Products</div>
                     <ul class="space-y-3">
@@ -807,7 +768,6 @@
                         <li><a href="#" class="text-sm text-charcoal-200 hover:text-gold-400 transition-colors">Tropical</a></li>
                     </ul>
                 </div>
-
                 <div>
                     <div class="text-xs tracking-[0.2em] uppercase text-charcoal-300 font-medium mb-6">Connect</div>
                     <ul class="space-y-3">
@@ -818,8 +778,6 @@
                     </ul>
                 </div>
             </div>
-
-            <!-- Bottom -->
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8">
                 <div class="text-xs text-charcoal-400">© 2024 Amfresh Group. All rights reserved.</div>
                 <div class="flex items-center gap-6">
@@ -831,22 +789,16 @@
         </div>
     </footer>
 
-    <!-- Toast notification container -->
     <div id="toastContainer" class="fixed bottom-6 right-6 z-[100] space-y-3"></div>
 
     <script>
-        // Initialize Lucide icons
         lucide.createIcons();
 
-        // ========== Hero Animation Trigger ==========
         window.addEventListener('load', () => {
             document.getElementById('heroContent').classList.add('hero-loaded');
         });
 
-        // ========== Navbar Scroll ==========
         const navbar = document.getElementById('navbar');
-        let lastScroll = 0;
-
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
             if (currentScroll > 80) {
@@ -854,10 +806,8 @@
             } else {
                 navbar.classList.remove('nav-scrolled');
             }
-            lastScroll = currentScroll;
         });
 
-        // ========== Mobile Menu ==========
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         let menuOpen = false;
@@ -876,7 +826,6 @@
             lucide.createIcons();
         });
 
-        // Close mobile menu on link click
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
                 menuOpen = false;
@@ -887,112 +836,46 @@
             });
         });
 
-        // ========== Scroll Animations ==========
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, observerOptions);
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // ========== Counter Animation ==========
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const counter = entry.target;
                     if (counter.dataset.counted) return;
                     counter.dataset.counted = 'true';
-
                     const target = parseInt(counter.dataset.target);
                     const duration = 2000;
                     const startTime = performance.now();
-
                     function updateCounter(currentTime) {
                         const elapsed = currentTime - startTime;
                         const progress = Math.min(elapsed / duration, 1);
-                        const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
-                        const current = Math.floor(eased * target);
-
-                        counter.textContent = current.toLocaleString();
-
-                        if (progress < 1) {
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            counter.textContent = target.toLocaleString();
-                        }
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        counter.textContent = Math.floor(eased * target).toLocaleString();
+                        if (progress < 1) requestAnimationFrame(updateCounter);
+                        else counter.textContent = target.toLocaleString();
                     }
-
                     requestAnimationFrame(updateCounter);
                 }
             });
         }, { threshold: 0.5 });
+        document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
-        document.querySelectorAll('.counter').forEach(el => {
-            counterObserver.observe(el);
-        });
-
-        // ========== Product Filter ==========
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const productCards = document.querySelectorAll('.product-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.dataset.filter;
-
-                // Update active state
-                filterBtns.forEach(b => {
-                    b.classList.remove('active');
-                    b.classList.add('text-charcoal-500');
-                });
-                btn.classList.add('active');
-                btn.classList.remove('text-charcoal-500');
-
-                // Filter cards
-                productCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = '';
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        requestAnimationFrame(() => {
-                            card.style.transition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        });
-                    } else {
-                        card.style.transition = 'all 0.3s ease';
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(10px)';
-                        setTimeout(() => { card.style.display = 'none'; }, 300);
-                    }
-                });
-            });
-        });
-
-        // ========== Contact Form ==========
         function showToast(message, type = 'success') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             const bgColor = type === 'success' ? 'bg-forest-700' : 'bg-red-600';
             const icon = type === 'success' ? 'check-circle' : 'alert-circle';
-
             toast.className = `toast ${bgColor} text-ivory-100 px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 min-w-[300px]`;
-            toast.innerHTML = `
-                <i data-lucide="${icon}" class="w-5 h-5 flex-shrink-0"></i>
-                <span class="text-sm font-medium">${message}</span>
-            `;
+            toast.innerHTML = `<i data-lucide="${icon}" class="w-5 h-5 flex-shrink-0"></i><span class="text-sm font-medium">${message}</span>`;
             container.appendChild(toast);
             lucide.createIcons();
-
             setTimeout(() => {
                 toast.style.transition = 'all 0.4s ease';
                 toast.style.opacity = '0';
@@ -1005,10 +888,8 @@
             e.preventDefault();
             const btn = e.target.querySelector('button[type="submit"]');
             const originalHTML = btn.innerHTML;
-
             btn.innerHTML = '<svg class="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" opacity="0.3"/><path d="M12 2a10 10 0 019.95 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Sending...</span>';
             btn.disabled = true;
-
             setTimeout(() => {
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
@@ -1018,7 +899,6 @@
             }, 1500);
         });
 
-        // ========== Smooth scroll for anchor links ==========
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const target = document.querySelector(this.getAttribute('href'));
